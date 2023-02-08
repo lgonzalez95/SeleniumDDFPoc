@@ -20,9 +20,9 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Publish Report') {
             steps {
-                echo "Deploying..."
+                  publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: 'extended-report.html', keepAll: false, reportDir: 'target/surefire-reports/html/', reportFiles: '', reportName: 'HTML Report', reportTitles: ''])
             }
         }
     }
