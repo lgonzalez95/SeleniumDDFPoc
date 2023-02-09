@@ -24,7 +24,7 @@ pipeline {
             steps {
                   publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: 'extended-report.html', keepAll: false, reportDir: 'target/surefire-reports/html/', reportFiles: '', reportName: 'HTML Report', reportTitles: ''])
                 
-                emailext attachmentsPattern: '**/*.html', 
+                emailext attachmentsPattern: 'extended-report.html', 
                 body: '''${SCRIPT, template="groovy-html.template"}''', 
                 mimeType: 'text/html', 
                 subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - ${currentBuild.currentResult}", 
