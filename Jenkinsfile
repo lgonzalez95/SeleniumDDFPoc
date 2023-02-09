@@ -22,7 +22,7 @@ pipeline {
 
         stage('Publish Report') {
             steps {
-                  publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: 'extended-report.html', keepAll: false, reportDir: 'target/surefire-reports/html/', reportFiles: '', reportName: 'HTML Report', reportTitles: ''])
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: 'extended-report.html', keepAll: false, reportDir: 'target/surefire-reports/html/', reportFiles: '', reportName: 'HTML Report', reportTitles: ''])
                 
                 emailext attachmentsPattern: 'target/surefire-reports/html/extended-report.html', 
                 body: '''${SCRIPT, template="groovy-html.template"}''', 
